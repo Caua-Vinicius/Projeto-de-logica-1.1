@@ -50,6 +50,38 @@ public class Pikomon {
         }
         return 1;
     }
+
+    /*A variavel checagem sera utilizada para ser o meio de busca nos arryas, e do mesmo jeito temos o tamanho da lista para ser um limite quando começar a buscar o nome do pokemon, e por ultimo temos a variavel, nome_busca que é uma strig vazia que irá receber o nome do array nomes de acordo com o index e checagem
+     * 
+     * Dentro do while, o index dos nomes será visto um por um até identificar um nome igual, e caso tenha, vai quebrar o looping de busca e irá realizar normalmente a deletagem do pokemon dentro do crud.
+     * 
+     * Alem disso, caso a busca não de nenhum resultado, vai retornar o valor 2 que sera usado para identificar que não foi possivel realizar a função
+     */
+
+    public int remove (String nome, int checagem){
+        checagem = 0;
+        int tamanho_lista = 0;
+        String nome_busca = "";
+            while(checagem<= tamanho_lista){
+                nome_busca = nomes.get(checagem);
+                if(nome == nome_busca){
+                    break;
+                }
+                checagem =+ 1;
+                if(checagem == tamanho_lista & nome != nome_busca){
+                    checagem =+ 1;
+                    return 2;
+                }
+            }
+        nomes.remove(checagem);
+        grupos.remove(checagem);
+        grupos2.remove(checagem);
+        ivs.remove(checagem);
+        sexos.remove(checagem);
+        return 1;
+        
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
