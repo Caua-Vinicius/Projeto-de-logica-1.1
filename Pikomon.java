@@ -39,7 +39,6 @@ public class Pikomon {
             }
         }
         
-
         /*Criação dos arrays */
 
         if (teste == 2){
@@ -48,7 +47,6 @@ public class Pikomon {
             grupos2.add(grupo2);
             ivs.add(iv);
             sexos.add(sexo);
-
         }
         return 1;
     }
