@@ -15,9 +15,25 @@ public class Pikomon {
     /*No recebimento dos grupos, teremos uma lista com numeros que o cliente decidira o grupo com base no numero do grupo indicado em uma lista, e no codigo esse numero sera transformado em uma string e adicionada no array com o nome correto do grupo */
 
     /*Em relação, ao sexo, sera a mesma coisa acima */
+    
+    public int read (String nome){
+        int tamanho_lista = nomes.size();
+        String nomes_busca;
+        int checagem = 0;
 
+        while(checagem <= tamanho_lista){
+            nomes_busca = nomes.get(checagem);
+            if(nome == nomes_busca){
+                return checagem;
+            }
+            checagem += 1;
+            
+        }
 
-    public int create (String nome, String grupo, String grupo2, int iv, String sexo, int teste){
+        return -2;
+    }
+
+    public int create (String nome, String grupo, String grupo2, int iv, String sexo){
         
         /*checagem 
          * Defini uma variavel para pegar o tamanho completo do vetor, alem disso salvei outra variavel para receber os nomes dos pokemons de acordo com a checagem, que nesse caso tambem será o valor respectivo ao indice. O while ira continuar rodando enquanto o tamanho da lista não for do mesmo tamanho do vetor, assim ele consegue averiguar cada componente, e caso, se nessa busca, ja exista um pokemon de mesmo nome registrado, o usuario deve refazer o cadastro com um nome diferente.
@@ -25,29 +41,16 @@ public class Pikomon {
 
         /*Opções do Return
             * 1 - Pokemon Registrado com sucesso ou deu certo
-            * 2 - Pokemon Já Registrado ou tem problema
+            * -2 - Pokemon Já Registrado ou tem problema
          */
-
-        int tamanho_lista = nomes.size();
-        String nomes_busca;
-        int checagem = 0;
-        
-        while(checagem <= tamanho_lista){
-            nomes_busca = nomes.get(checagem);
-            if(nome == nomes_busca){
-                return 2;
-            }
-        }
         
         /*Criação dos arrays */
-
-        if (teste == 2){
             nomes.add(nome);
             grupos.add(grupo);
             grupos2.add(grupo2);
             ivs.add(iv);
             sexos.add(sexo);
-        }
+        
         return 1;
     }
 
@@ -60,7 +63,7 @@ public class Pikomon {
 
     public int remove (String nome, int checagem){
         checagem = 0;
-        int tamanho_lista = 0;
+        int tamanho_lista = nomes.size();
         String nome_busca = "";
             while(checagem<= tamanho_lista){
                 nome_busca = nomes.get(checagem);
@@ -70,7 +73,7 @@ public class Pikomon {
                 checagem =+ 1;
                 if(checagem == tamanho_lista & nome != nome_busca){
                     checagem =+ 1;
-                    return 2;
+                    return -2;
                 }
             }
         nomes.remove(checagem);
