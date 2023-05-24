@@ -104,7 +104,9 @@ public class Pikomon {
 
                 System.out.println("quantos ivs perfeitos tem de 0 a 6 ");
                 escolha_ivs = input.nextInt();
+
             }
+        }
     }
 
 }
