@@ -88,7 +88,23 @@ public class Pikomon {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
+        int  escolha_sexo; 
+        int escolha_ivs;
+
         int escolha;
+        while(true){
+            System.out.println("escolha operaçao");
+            System.out.println("1-adicionar pokemon");
+            System.out.println("2-remover");
+            escolha = input.nextInt();
+            
+            if(escolha ==1){
+                System.out.println("qual sexo masculino(1) feminino (2)");
+                escolha_sexo = input.nextInt();
+
+                System.out.println("quantos ivs perfeitos tem de 0 a 6 ");
+                escolha_ivs = input.nextInt();
+            }
     }
 
 }
