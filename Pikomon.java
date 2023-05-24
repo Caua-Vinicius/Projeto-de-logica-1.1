@@ -113,7 +113,13 @@ public class Pikomon {
 
         int escolha_sexo;
         int escolha_ivs;
-
+        String escolha_nome;
+        int escolha_grupo1;
+        int escolha_grupo2;
+        String nome_match1;
+        String nome_match2;
+        String escolha_excluir;
+        int tipo_busca;
         int escolha;
         while (true) {
             System.out.println("escolha operaçao");
@@ -121,13 +127,87 @@ public class Pikomon {
             System.out.println("2-remover");
             escolha = input.nextInt();
 
-            if (escolha == 1) {
-                System.out.println("qual sexo masculino(1) feminino (2)");
+            if(escolha == 1){
+                System.out.println("Adicionar o nome do pokemon");
+                escolha_nome = input.next();
+
+                System.out.println("Lista dos grupos");
+                System.out.println(" 1- Amorphous");
+                System.out.println(" 2- Bug");
+                System.out.println(" 3- Dragon");
+                System.out.println(" 4- Fairy");
+                System.out.println(" 5- Field");
+                System.out.println(" 6- Flying");
+                System.out.println(" 7- Grass");
+                System.out.println(" 8- Human-like");
+                System.out.println(" 9- Mineral");
+                System.out.println(" 10- Monster");
+                System.out.println(" 11- Water 1");
+                System.out.println(" 12- Water 2");
+                System.out.println(" 13- Water 3"); 
+                System.out.println("Escolha um dos grupos listados");
+                escolha_grupo1 = input.nextInt();
+
+                System.out.println("Lista do grupo 2");
+                System.out.println(" 0- sem grupo 2");
+                System.out.println(" 1- Amorphous");
+                System.out.println(" 2- Bug");
+                System.out.println(" 3- Dragon");
+                System.out.println(" 4- Fairy");
+                System.out.println(" 5- Field");
+                System.out.println(" 6- Flying");
+                System.out.println(" 7- Grass");
+                System.out.println(" 8- Human-like");
+                System.out.println(" 9- Mineral");
+                System.out.println(" 10- Monster");
+                System.out.println(" 11- Water 1");
+                System.out.println(" 12- Water 2");
+                System.out.println(" 13- Water 3"); 
+                System.out.println("Escolha um dos grupos listados");
+                escolha_grupo2 = input.nextInt();
+
+                System.out.println("Qual sexo masculino(1) feminino (2)");
                 escolha_sexo = input.nextInt();
 
-                System.out.println("quantos ivs perfeitos tem de 0 a 6 ");
+                System.out.println("Quantos ivs perfeitos tem de 0 a 6 ");
                 escolha_ivs = input.nextInt();
+                 
 
+            } 
+            if (escolha == 2) {
+                System.out.println("qual o nome do pokemon quer excluir");
+                escolha_excluir = input.next();
+            }
+
+            if (escolha == 3) {
+                System.out.println("escolha o tipo de busca");
+                System.out.println("1- buscar por nome");
+                System.out.println("2- buscar por grupo");
+
+                tipo_busca = input.nextInt();
+                if (tipo_busca == 1) {
+
+                }
+
+                if (tipo_busca == 2) {
+
+                }
+            }
+
+            if (escolha == 4){
+                System.out.println("Escolha dois pokemons para testar o match");
+                System.out.println("Digite o nome do primeiro pokemon");
+                nome_match1 = input.next();
+
+                System.out.println("Digite o nome do segundo pokemon");
+                nome_match2 = input.next();
+
+            }
+            if(escolha == 5) {
+            }
+
+            if(escolha == 6) {
+                break;
             }
         }
     }
