@@ -10,7 +10,11 @@ public class Pikomon {
     public static ArrayList<Integer> grupos2_int = new ArrayList<>();
 
     public static ArrayList<Integer> ivs = new ArrayList<>();
+
+    
+    public static ArrayList<String> sexos_int = new ArrayList<>();
     public static ArrayList<String> sexos = new ArrayList<>();
+
     public static ArrayList<Integer> pesquisa = new ArrayList<>();
 
     /*
@@ -60,6 +64,112 @@ public class Pikomon {
         return -2;
     }
 
+    /*As funções de transcrição estão servindo para transformar o grupo recebido em inteiros e transcreve-los para uma String */
+
+
+    public String transcricao2(int grupo_int){
+        
+        if(grupo_int == 0){
+            return "NaN";
+        }
+        if(grupo_int == 1){
+            return "Amorphous";
+        }
+        if(grupo_int == 2){
+            return "Bug";
+        }
+        if(grupo_int == 3){
+            return "Dragon";
+        }
+        if(grupo_int == 4){
+            return "Fairy";
+        }
+        if(grupo_int == 5){
+            return "Field";
+        }
+        if(grupo_int == 6){
+            return "Flying";
+        }
+        if(grupo_int == 7){
+            return "Grass";
+        }
+        if(grupo_int == 8){
+            return "Human-Like";
+        }
+        if(grupo_int == 9){
+            return "Mineral";
+        }
+        if(grupo_int == 10){
+            return "Monster";
+        }
+        if(grupo_int == 11){
+            return "Water_1";
+        }
+        if(grupo_int == 12){
+            return "Water_2";
+        }
+        if(grupo_int == 13){
+            return "Water_3";
+        }
+        else{
+            return "Não informado corretamente";
+        }
+    }
+
+    public String transcricao1(int grupo_int){
+        if(grupo_int == 1){
+            return "Amorphous";
+        }
+        if(grupo_int == 2){
+            return "Bug";
+        }
+        if(grupo_int == 3){
+            return "Dragon";
+        }
+        if(grupo_int == 4){
+            return "Fairy";
+        }
+        if(grupo_int == 5){
+            return "Field";
+        }
+        if(grupo_int == 6){
+            return "Flying";
+        }
+        if(grupo_int == 7){
+            return "Grass";
+        }
+        if(grupo_int == 8){
+            return "Human-Like";
+        }
+        if(grupo_int == 9){
+            return "Mineral";
+        }
+        if(grupo_int == 10){
+            return "Monster";
+        }
+        if(grupo_int == 11){
+            return "Water_1";
+        }
+        if(grupo_int == 12){
+            return "Water_2";
+        }
+        if(grupo_int == 13){
+            return "Water_3";
+        }
+        else{
+            return "Não informado corretamente";
+        }
+    }
+
+    public String transcricao_sexo(int sexo_int){
+        if(sexo_int == 1){
+            return 
+        }
+        if(sexo_int == 2){
+
+        }
+    }
+
     public int read_grupo(int grupo) {
         int checagem = 0;
         int grupo_busca, grupo_busca2;
@@ -95,7 +205,7 @@ public class Pikomon {
 
     }
 
-    public int create(String nome, int grupo_int, int grupo2_int, int iv, String sexo) {
+    public int create(String nome, int grupo1_int, int grupo2_int, int iv, String sexo) {
 
         /*
          * A checagem vai receber o valor do return da função read_nome(), dependendo do
@@ -103,6 +213,8 @@ public class Pikomon {
          * existia um pokemon, ou ira adicionar normalmente
          */
 
+        String grupo1 = transcricao1(grupo1_int);
+        String grupo2 = transcricao2(grupo2_int);
         int checagem = read_nome(nome);
         if (checagem < 0) {
             return -2;
@@ -110,8 +222,10 @@ public class Pikomon {
 
         /* Adição do pokemon e suas informações nos respectivos arrays */
         nomes.add(nome);
-        grupos1_int.add(grupo_int);
+        grupos1_int.add(grupo1_int);
         grupos2_int.add(grupo2_int);
+        grupos1.add(grupo1);
+        grupos2.add(grupo2);
         ivs.add(iv);
         sexos.add(sexo);
 
@@ -182,6 +296,10 @@ public class Pikomon {
                 System.out.println("Adicionar o nome do pokemon");
                 escolha_nome = input.next();
 
+
+                /*
+                 É necessário Adicionar um while na decisão das respostar para sempre perguntar e repetir a pergunta enquanto a resposta não for valida  
+                */
                 System.out.println("Lista dos grupos");
                 System.out.println(" 1- Amorphous");
                 System.out.println(" 2- Bug");
