@@ -12,7 +12,7 @@ public class Pikomon {
     public static ArrayList<Integer> ivs = new ArrayList<>();
 
     
-    public static ArrayList<String> sexos_int = new ArrayList<>();
+    public static ArrayList<Integer> sexos_int = new ArrayList<>();
     public static ArrayList<String> sexos = new ArrayList<>();
 
     public static ArrayList<Integer> pesquisa = new ArrayList<>();
@@ -37,7 +37,7 @@ public class Pikomon {
      * -2 - Pokemon Já Registrado ou tem problema
      */
 
-    public int read_nome(String nome) {
+    public static int read_nome(String nome) {
         int tamanho_lista = nomes.size();
         String nomes_busca;
         int checagem = 0;
@@ -67,7 +67,7 @@ public class Pikomon {
     /*As funções de transcrição estão servindo para transformar o grupo recebido em inteiros e transcreve-los para uma String */
 
 
-    public String transcricao2(int grupo_int){
+    public static String transcricao2(int grupo_int){
         
         if(grupo_int == 0){
             return "NaN";
@@ -116,7 +116,7 @@ public class Pikomon {
         }
     }
 
-    public String transcricao1(int grupo_int){
+    public static String transcricao1(int grupo_int){
         if(grupo_int == 1){
             return "Amorphous";
         }
@@ -161,12 +161,14 @@ public class Pikomon {
         }
     }
 
-    public String transcricao_sexo(int sexo_int){
-        if(sexo_int == 1){
-            return 
-        }
-        if(sexo_int == 2){
+    public static String transcricao_sexo(int sexo_int){
 
+        /*Ao receber o valor inteiro da escolha do sexo do pokemon, será retornado a String com o nome escrito do sexo definido */
+        if(sexo_int == 1){
+            return "Masculino";
+        }
+        else{
+            return "Feminino";
         }
     }
 
@@ -205,7 +207,7 @@ public class Pikomon {
 
     }
 
-    public int create(String nome, int grupo1_int, int grupo2_int, int iv, String sexo) {
+    public static int create(String nome, int grupo1_int, int grupo2_int, int iv, int sexo_int) {
 
         /*
          * A checagem vai receber o valor do return da função read_nome(), dependendo do
@@ -215,6 +217,7 @@ public class Pikomon {
 
         String grupo1 = transcricao1(grupo1_int);
         String grupo2 = transcricao2(grupo2_int);
+        String sexo = transcricao_sexo(sexo_int);
         int checagem = read_nome(nome);
         if (checagem < 0) {
             return -2;
@@ -227,6 +230,7 @@ public class Pikomon {
         grupos1.add(grupo1);
         grupos2.add(grupo2);
         ivs.add(iv);
+        sexos_int.add(sexo_int);
         sexos.add(sexo);
 
         return 1;
@@ -269,6 +273,7 @@ public class Pikomon {
         grupos2_int.remove(checagem);
         ivs.remove(checagem);
         sexos.remove(checagem);
+        sexos_int.remove(checagem);
         return 1;
 
     }
@@ -340,7 +345,6 @@ public class Pikomon {
 
                 System.out.println("Quantos ivs perfeitos tem de 0 a 6 ");
                 escolha_ivs = input.nextInt();
-
             }
             if (escolha == 2) {
                 System.out.println("qual o nome do pokemon quer excluir");
