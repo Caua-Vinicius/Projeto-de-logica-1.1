@@ -52,9 +52,9 @@ public class Pikomon {
          * WHILE e ira retornar -2 que é o valor de erro ou de não encontrado
          */
 
-        while (checagem <= tamanho_lista) {
+        while (checagem < tamanho_lista) {
             nomes_busca = nomes.get(checagem);
-            if (nome == nomes_busca) {
+            if (nome.equals(nomes_busca)) {
                 return checagem;
             }
             checagem += 1;
@@ -172,7 +172,7 @@ public class Pikomon {
         }
     }
 
-    public int read_grupo(int grupo) {
+    public static int read_grupo(int grupo) {
         int checagem = 0;
         int grupo_busca, grupo_busca2;
         int tamanho_lista = grupos1.size();
@@ -190,16 +190,17 @@ public class Pikomon {
          * 
          */
 
-        while (checagem <= tamanho_lista) {
+        while (checagem < tamanho_lista) {
             grupo_busca = grupos1_int.get(checagem);
             grupo_busca2 = grupos2_int.get(checagem);
 
             if (grupo == grupo_busca || grupo == grupo_busca2) {
                 pesquisa.add(checagem);
             }
+            checagem +=1;
         }
 
-        if (pesquisa.size() > 0) {
+        if (pesquisa.size() >= 0) {
             return 1;
         } else {
             return -2;
@@ -219,8 +220,8 @@ public class Pikomon {
         String grupo2 = transcricao2(grupo2_int);
         String sexo = transcricao_sexo(sexo_int);
         int checagem = read_nome(nome);
-        if (checagem < 0) {
-            return -2;
+        if (checagem > 0) {
+            return -1;
         }
 
         /* Adição do pokemon e suas informações nos respectivos arrays */
@@ -236,7 +237,7 @@ public class Pikomon {
         return 1;
     }
 
-    public int remove(String nome, int checagem) {
+    public static int remove(String nome, int checagem) {
         checagem = 0;
         int tamanho_lista = nomes.size();
         String nome_busca = "";
@@ -255,7 +256,7 @@ public class Pikomon {
          * sera usado para identificar que não foi possivel realizar a função
          */
 
-        while (checagem <= tamanho_lista) {
+        while (checagem < tamanho_lista) {
             nome_busca = nomes.get(checagem);
             if (nome == nome_busca) {
                 break;
@@ -281,7 +282,7 @@ public class Pikomon {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int escolha_sexo;
+        int escolha_sexo, teste;
         int escolha_ivs;
         String escolha_nome;
         int escolha_grupo1;
@@ -295,6 +296,7 @@ public class Pikomon {
             System.out.println("escolha operaçao");
             System.out.println("1-adicionar pokemon");
             System.out.println("2-remover");
+            System.out.println("3- Buscar");
             escolha = input.nextInt();
 
             if (escolha == 1) {
@@ -345,6 +347,13 @@ public class Pikomon {
 
                 System.out.println("Quantos ivs perfeitos tem de 0 a 6 ");
                 escolha_ivs = input.nextInt();
+
+                teste = create(escolha_nome, escolha_grupo1, escolha_grupo2, escolha_ivs, escolha_sexo);
+                if(teste > 0){
+                    System.out.println("Pokemon adicionado com sucesso");
+                }else {
+                    System.out.println("deu erro");
+                }
             }
             if (escolha == 2) {
                 System.out.println("qual o nome do pokemon quer excluir");
@@ -357,12 +366,55 @@ public class Pikomon {
                 System.out.println("2- buscar por grupo");
 
                 tipo_busca = input.nextInt();
-                if (tipo_busca == 1) {
+                if (tipo_busca == 1){
+                    System.out.println("Digite o nome do pokemon: ");
+                    String escolha_buscanome = input.next();
+                    int nome_busca = read_nome(escolha_buscanome);
+                    if (nome_busca >= 0){
+                        System.out.println(nomes.get(nome_busca));
+                        System.out.println(grupos1.get(nome_busca));
+                        System.out.println(grupos2.get(nome_busca));
+                        System.out.println(ivs.get(nome_busca));
+                        System.out.println(sexos.get(nome_busca));
+                    }
 
                 }
 
                 if (tipo_busca == 2) {
+                    System.out.println(" 1- Amorphous");
+                    System.out.println(" 2- Bug");
+                    System.out.println(" 3- Dragon");
+                    System.out.println(" 4- Fairy");
+                    System.out.println(" 5- Field");
+                    System.out.println(" 6- Flying");
+                    System.out.println(" 7- Grass");
+                    System.out.println(" 8- Human-like");
+                    System.out.println(" 9- Mineral");
+                    System.out.println(" 10- Monster");
+                    System.out.println(" 11- Water 1");
+                    System.out.println(" 12- Water 2");
+                    System.out.println(" 13- Water 3");
+                    System.out.println("Escolha um dos grupos listados");
+                    
+                    int escolha_buscagrupo = input.nextInt();
+                    int busca_grupo = read_grupo(escolha_buscagrupo);
+                    if (busca_grupo > 0){
+                        int contagem = 0;
+                        int tamanho_lista = pesquisa.size();
+                        while(contagem < tamanho_lista){
+                            System.out.println("Lista dos grupos");
+                            int pesquisa_index = pesquisa.get(contagem);
+                            System.out.println(nomes.get(pesquisa_index));
+                            System.out.println(grupos1.get(pesquisa_index));
+                            System.out.println(grupos2.get(pesquisa_index));
+                            System.out.println(ivs.get(pesquisa_index));
+                            System.out.println(sexos.get(pesquisa_index));
+                            contagem+=1;
+                        }
+                        pesquisa.clear();
+                    }
 
+                    
                 }
             }
 
