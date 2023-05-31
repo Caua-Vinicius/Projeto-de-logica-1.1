@@ -237,10 +237,10 @@ public class Pikomon {
         return 1;
     }
 
-    public static int remove(String nome, int checagem) {
-        checagem = 0;
+    public static int remove(String nome) {
+        int checagem = 0;
         int tamanho_lista = nomes.size();
-        String nome_busca = "";
+        String nome_busca;
         /*
          * A variavel checagem sera utilizada para ser o meio de busca nos arryas, e do
          * mesmo jeito temos o tamanho da lista para ser um limite quando começar a
@@ -258,14 +258,14 @@ public class Pikomon {
 
         while (checagem < tamanho_lista) {
             nome_busca = nomes.get(checagem);
-            if (nome == nome_busca) {
+            if (nome.equals(nome_busca)) {
                 break;
             }
-            checagem = +1;
+            
             if (checagem == tamanho_lista & nome != nome_busca) {
-                checagem = +1;
                 return -2;
             }
+            checagem = +1;
         }
         nomes.remove(checagem);
         grupos1.remove(checagem);
@@ -276,6 +276,32 @@ public class Pikomon {
         sexos.remove(checagem);
         sexos_int.remove(checagem);
         return 1;
+
+    }
+    public static int teste_match(String nome1, String nome2){
+        int index_nome1 = read_nome(nome1);
+        int index_nome2 = read_nome(nome2);
+        String grupo1_poke1 = grupos1.get(index_nome1);
+        String grupo2_poke1 = grupos2.get(index_nome1);
+        String grupo1_poke2 = grupos2.get(index_nome2);
+        String grupo2_poke2 = grupos2.get(index_nome2);
+        int sexo_poke1 = sexos_int.get(index_nome1);
+        int sexo_poke2 = sexos_int.get(index_nome2);
+        if(sexo_poke1 == 1 && sexo_poke2 == 2 || sexo_poke1 == 2 && sexo_poke2 ==1){
+            if(grupo1_poke1.equals(grupo1_poke2) || grupo1_poke1.equals(grupo2_poke2)){
+                return 1;
+            }
+            if(grupo2_poke1.equals(grupo1_poke2) || grupo2_poke1.equals(grupo2_poke2)){
+                return 1;
+            }
+            else{
+                return -2;
+            }
+        }
+        else{
+            return -2;
+        }
+
 
     }
 
@@ -293,11 +319,15 @@ public class Pikomon {
         int tipo_busca;
         int escolha;
         while (true) {
-            System.out.println("escolha operaçao");
-            System.out.println("1-adicionar pokemon");
-            System.out.println("2-remover");
+            System.out.println("----------------------------------------------");
+            System.out.println("Escolha a operação");
+            System.out.println("1- Adicionar pokemon");
+            System.out.println("2- Remover");
             System.out.println("3- Buscar");
+            System.out.println("4- Teste Match");
+
             escolha = input.nextInt();
+            System.out.println("----------------------------------------------");
 
             if (escolha == 1) {
                 System.out.println("Adicionar o nome do pokemon");
@@ -307,6 +337,7 @@ public class Pikomon {
                 /*
                  É necessário Adicionar um while na decisão das respostar para sempre perguntar e repetir a pergunta enquanto a resposta não for valida  
                 */
+                System.out.println("----------------------------------------------");
                 System.out.println("Lista dos grupos");
                 System.out.println(" 1- Amorphous");
                 System.out.println(" 2- Bug");
@@ -323,6 +354,8 @@ public class Pikomon {
                 System.out.println(" 13- Water 3");
                 System.out.println("Escolha um dos grupos listados");
                 escolha_grupo1 = input.nextInt();
+                System.out.println("----------------------------------------------");
+
 
                 System.out.println("Lista do grupo 2");
                 System.out.println(" 0- sem grupo 2");
@@ -341,23 +374,36 @@ public class Pikomon {
                 System.out.println(" 13- Water 3");
                 System.out.println("Escolha um dos grupos listados");
                 escolha_grupo2 = input.nextInt();
+                System.out.println("----------------------------------------------");
 
                 System.out.println("Qual sexo masculino(1) feminino (2)");
                 escolha_sexo = input.nextInt();
+                System.out.println("----------------------------------------------");
 
                 System.out.println("Quantos ivs perfeitos tem de 0 a 6 ");
                 escolha_ivs = input.nextInt();
+                System.out.println("----------------------------------------------");
 
                 teste = create(escolha_nome, escolha_grupo1, escolha_grupo2, escolha_ivs, escolha_sexo);
                 if(teste > 0){
                     System.out.println("Pokemon adicionado com sucesso");
                 }else {
-                    System.out.println("deu erro");
+                    System.out.println("Pokemon ja existente em nosso sistema ");
                 }
+                System.out.println("----------------------------------------------");
             }
             if (escolha == 2) {
                 System.out.println("qual o nome do pokemon quer excluir");
                 escolha_excluir = input.next();
+                int delete_teste = remove(escolha_excluir);
+                System.out.println("----------------------------------------------");
+                if(delete_teste > 0){
+                    System.out.println("Pokemon Removido com sucesso");
+                }
+                else{
+                    System.out.println("Pokemon não existe em nosso sistema para ser excluido");
+                }
+                System.out.println("----------------------------------------------");
             }
 
             if (escolha == 3) {
@@ -404,11 +450,13 @@ public class Pikomon {
                         while(contagem < tamanho_lista){
                             System.out.println("Lista dos grupos");
                             int pesquisa_index = pesquisa.get(contagem);
+                            System.out.println("----------------------------------------------");
                             System.out.println(nomes.get(pesquisa_index));
                             System.out.println(grupos1.get(pesquisa_index));
                             System.out.println(grupos2.get(pesquisa_index));
                             System.out.println(ivs.get(pesquisa_index));
                             System.out.println(sexos.get(pesquisa_index));
+                            System.out.println("----------------------------------------------");
                             contagem+=1;
                         }
                         pesquisa.clear();
@@ -425,6 +473,15 @@ public class Pikomon {
 
                 System.out.println("Digite o nome do segundo pokemon");
                 nome_match2 = input.next();
+                System.out.println("----------------------------------------------");
+
+                int resposta_match = teste_match(nome_match1, nome_match2);
+                if (resposta_match>0){
+                    System.out.println("Parabens! esses pokemons podem cruzar!");
+                }
+                else{
+                    System.out.println("Que pena, esse casal não combina nenhum pouco.");
+                }
 
             }
             if (escolha == 5) {
