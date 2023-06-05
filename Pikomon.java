@@ -325,6 +325,8 @@ public class Pikomon {
             System.out.println("2- Remover");
             System.out.println("3- Buscar");
             System.out.println("4- Teste Match");
+            System.out.println("5- Listar");
+
 
             escolha = input.nextInt();
             System.out.println("----------------------------------------------");
@@ -415,6 +417,7 @@ public class Pikomon {
                 if (tipo_busca == 1){
                     System.out.println("Digite o nome do pokemon: ");
                     String escolha_buscanome = input.next();
+                    System.out.println("----------------------------------------------");
                     int nome_busca = read_nome(escolha_buscanome);
                     if (nome_busca >= 0){
                         System.out.println(nomes.get(nome_busca));
@@ -485,6 +488,20 @@ public class Pikomon {
 
             }
             if (escolha == 5) {
+                int contagem =0;
+                int tamanho_lista = nomes.size();
+                        while(contagem < tamanho_lista){
+                            System.out.println("Lista dos dos pokemons");
+                            System.out.println("----------------------------------------------");
+                            System.out.println(nomes.get(contagem));
+                            System.out.println(grupos1.get(contagem));
+                            System.out.println(grupos2.get(contagem));
+                            System.out.println(ivs.get(contagem));
+                            System.out.println(sexos.get(contagem));
+                            System.out.println("----------------------------------------------");
+                            contagem+=1;
+                        }
+
             }
 
             if (escolha == 6) {
