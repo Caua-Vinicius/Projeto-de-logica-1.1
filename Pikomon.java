@@ -428,11 +428,16 @@ public class Pikomon {
             }
 
             if (escolha == 3) {
-                System.out.println("escolha o tipo de busca");
-                System.out.println("1- buscar por nome");
-                System.out.println("2- buscar por grupo");
-
-                tipo_busca = input.nextInt();
+                do{
+                    System.out.println("escolha o tipo de busca");
+                    System.out.println("1- buscar por nome");
+                    System.out.println("2- buscar por grupo");
+                    tipo_busca = input.nextInt();
+                    if(tipo_busca<1 || tipo_busca>2){
+                    System.out.println("Escolha invalida, digite novamente");
+                    }
+                }while(tipo_busca<1 || tipo_busca>2);
+                
                 if (tipo_busca == 1){
                     System.out.println("Digite o nome do pokemon: ");
                     String escolha_buscanome = input.next();
@@ -445,32 +450,44 @@ public class Pikomon {
                         System.out.println(ivs.get(nome_busca));
                         System.out.println(sexos.get(nome_busca));
                     }
+                    else{
+                        System.out.println("Pokemon não encontrado");
+                    }
 
                 }
 
                 if (tipo_busca == 2) {
-                    System.out.println(" 1- Amorphous");
-                    System.out.println(" 2- Bug");
-                    System.out.println(" 3- Dragon");
-                    System.out.println(" 4- Fairy");
-                    System.out.println(" 5- Field");
-                    System.out.println(" 6- Flying");
-                    System.out.println(" 7- Grass");
-                    System.out.println(" 8- Human-like");
-                    System.out.println(" 9- Mineral");
-                    System.out.println(" 10- Monster");
-                    System.out.println(" 11- Water 1");
-                    System.out.println(" 12- Water 2");
-                    System.out.println(" 13- Water 3");
-                    System.out.println("Escolha um dos grupos listados");
+                    int escolha_buscagrupo;
+                    do{
+                        System.out.println("Lista dos grupos");
+                        System.out.println(" 1- Amorphous");
+                        System.out.println(" 2- Bug");
+                        System.out.println(" 3- Dragon");
+                        System.out.println(" 4- Fairy");
+                        System.out.println(" 5- Field");
+                        System.out.println(" 6- Flying");
+                        System.out.println(" 7- Grass");
+                        System.out.println(" 8- Human-like");
+                        System.out.println(" 9- Mineral");
+                        System.out.println(" 10- Monster");
+                        System.out.println(" 11- Water 1");
+                        System.out.println(" 12- Water 2");
+                        System.out.println(" 13- Water 3");
+                        System.out.println("Escolha um dos grupos listados");
+                        escolha_buscagrupo = input.nextInt(); 
+                        if(escolha_buscagrupo<1 || escolha_buscagrupo>13){
+                            System.out.println("Escolha invalida, digite novamente");
+                        }
+                        
+                    }while(escolha_buscagrupo<1 || escolha_buscagrupo>13);
                     
-                    int escolha_buscagrupo = input.nextInt();
+
                     int busca_grupo = read_grupo(escolha_buscagrupo);
                     if (busca_grupo > 0){
                         int contagem = 0;
                         int tamanho_lista = pesquisa.size();
                         while(contagem < tamanho_lista){
-                            System.out.println("Lista dos grupos");
+                            
                             int pesquisa_index = pesquisa.get(contagem);
                             System.out.println("----------------------------------------------");
                             System.out.println(nomes.get(pesquisa_index));
