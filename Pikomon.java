@@ -336,62 +336,81 @@ public class Pikomon {
                 escolha_nome = input.next();
 
 
-                /*
-                 É necessário Adicionar um while na decisão das respostar para sempre perguntar e repetir a pergunta enquanto a resposta não for valida  
-                */
-                System.out.println("----------------------------------------------");
-                System.out.println("Lista dos grupos");
-                System.out.println(" 1- Amorphous");
-                System.out.println(" 2- Bug");
-                System.out.println(" 3- Dragon");
-                System.out.println(" 4- Fairy");
-                System.out.println(" 5- Field");
-                System.out.println(" 6- Flying");
-                System.out.println(" 7- Grass");
-                System.out.println(" 8- Human-like");
-                System.out.println(" 9- Mineral");
-                System.out.println(" 10- Monster");
-                System.out.println(" 11- Water 1");
-                System.out.println(" 12- Water 2");
-                System.out.println(" 13- Water 3");
-                System.out.println("Escolha um dos grupos listados");
-                escolha_grupo1 = input.nextInt();
-                System.out.println("----------------------------------------------");
+                do{
+                    System.out.println("----------------------------------------------");
+                    System.out.println("Lista dos grupos");
+                    System.out.println(" 1- Amorphous");
+                    System.out.println(" 2- Bug");
+                    System.out.println(" 3- Dragon");
+                    System.out.println(" 4- Fairy");
+                    System.out.println(" 5- Field");
+                    System.out.println(" 6- Flying");
+                    System.out.println(" 7- Grass");
+                    System.out.println(" 8- Human-like");
+                    System.out.println(" 9- Mineral");
+                    System.out.println(" 10- Monster");
+                    System.out.println(" 11- Water 1");
+                    System.out.println(" 12- Water 2");
+                    System.out.println(" 13- Water 3");
+                    System.out.println("Escolha um dos grupos listados");
+                    escolha_grupo1 = input.nextInt();
+                    System.out.println("----------------------------------------------");
+                    if(escolha_grupo1<1 || escolha_grupo1>13){
+                        System.out.println("Escolha invalida, digite novamente");
+                    }
+                }while(escolha_grupo1<1 || escolha_grupo1>13);
 
+                
 
-                System.out.println("Lista do grupo 2");
-                System.out.println(" 0- sem grupo 2");
-                System.out.println(" 1- Amorphous");
-                System.out.println(" 2- Bug");
-                System.out.println(" 3- Dragon");
-                System.out.println(" 4- Fairy");
-                System.out.println(" 5- Field");
-                System.out.println(" 6- Flying");
-                System.out.println(" 7- Grass");
-                System.out.println(" 8- Human-like");
-                System.out.println(" 9- Mineral");
-                System.out.println(" 10- Monster");
-                System.out.println(" 11- Water 1");
-                System.out.println(" 12- Water 2");
-                System.out.println(" 13- Water 3");
-                System.out.println("Escolha um dos grupos listados");
-                escolha_grupo2 = input.nextInt();
-                System.out.println("----------------------------------------------");
+                do{
+                     System.out.println("Lista do grupo 2");
+                    System.out.println(" 0- sem grupo 2");
+                    System.out.println(" 1- Amorphous");
+                    System.out.println(" 2- Bug");
+                    System.out.println(" 3- Dragon");
+                    System.out.println(" 4- Fairy");
+                    System.out.println(" 5- Field");
+                    System.out.println(" 6- Flying");
+                    System.out.println(" 7- Grass");
+                    System.out.println(" 8- Human-like");
+                    System.out.println(" 9- Mineral");
+                    System.out.println(" 10- Monster");
+                    System.out.println(" 11- Water 1");
+                    System.out.println(" 12- Water 2");
+                    System.out.println(" 13- Water 3");
+                    System.out.println("Escolha um dos grupos listados");
+                    escolha_grupo2 = input.nextInt();
+                    System.out.println("----------------------------------------------");
+                    if(escolha_grupo1<1 || escolha_grupo1>13){
+                        System.out.println("Escolha invalida, digite novamente");
+                    }
+                } while(escolha_grupo1<1 || escolha_grupo1>13);
+                    
+               
+                do{
+                    System.out.println("Qual sexo masculino(1) feminino (2)");
+                    escolha_sexo = input.nextInt();
+                    System.out.println("----------------------------------------------");
+                    if(escolha_sexo <1 || escolha_sexo>2){
+                        System.out.println("Escolha invalida, digite novamente");
+                    }
+                }while(escolha_sexo <1 || escolha_sexo>2 )
 
-                System.out.println("Qual sexo masculino(1) feminino (2)");
-                escolha_sexo = input.nextInt();
-                System.out.println("----------------------------------------------");
-
-                System.out.println("Quantos ivs perfeitos tem de 0 a 6 ");
-                escolha_ivs = input.nextInt();
-                System.out.println("----------------------------------------------");
-
+                ;
+                do{
+                    System.out.println("Quantos ivs perfeitos tem de 0 a 6 ");
+                    escolha_ivs = input.nextInt();
+                    System.out.println("----------------------------------------------");
+                    if(escolha_ivs<0 || escolha_ivs>6){
+                        System.out.println("Escolha invalida, digite novamente");
+                    }
+                }while(escolha_ivs<0 || escolha_ivs>6);
+                
                 teste = create(escolha_nome, escolha_grupo1, escolha_grupo2, escolha_ivs, escolha_sexo);
                 if(teste > 0){
                     System.out.println("Pokemon adicionado com sucesso");
-                }else {
-                    System.out.println("Pokemon ja existente em nosso sistema ");
                 }
+                
                 System.out.println("----------------------------------------------");
             }
             if (escolha == 2) {
@@ -508,6 +527,7 @@ public class Pikomon {
                 break;
             }
         }
+        input.close();
     }
 
 }
