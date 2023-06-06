@@ -319,7 +319,6 @@ public class Pikomon {
         int tipo_busca;
         int escolha;
         while (true) {
-            System.out.println("----------------------------------------------");
             System.out.println("Escolha a operação");
             System.out.println("1- Adicionar pokemon");
             System.out.println("2- Remover");
@@ -416,12 +415,18 @@ public class Pikomon {
             if (escolha == 2) {
                 System.out.println("qual o nome do pokemon quer excluir");
                 escolha_excluir = input.next();
-                int delete_teste = remove(escolha_excluir);
+                int delete_teste;
                 System.out.println("----------------------------------------------");
-                if(delete_teste > 0){
+                int checagem_nome_remove = read_nome(escolha_excluir);
+                if(checagem_nome_remove>0){
+                    delete_teste = remove(escolha_excluir);
+                    if(delete_teste > 0){
                     System.out.println("Pokemon Removido com sucesso");
                 }
-                else{
+                }
+                
+                
+                if(checagem_nome_remove<0){
                     System.out.println("Pokemon não existe em nosso sistema para ser excluido");
                 }
                 System.out.println("----------------------------------------------");
@@ -506,14 +511,32 @@ public class Pikomon {
             }
 
             if (escolha == 4) {
-                System.out.println("Escolha dois pokemons para testar o match");
-                System.out.println("Digite o nome do primeiro pokemon");
-                nome_match1 = input.next();
+                int checagem_nome1, checagem_nome2;
+                do{
+                    System.out.println("Escolha dois pokemons para testar o match");
+                    System.out.println("Digite o nome do primeiro pokemon");
+                    nome_match1 = input.next();
 
-                System.out.println("Digite o nome do segundo pokemon");
+                    checagem_nome1 = read_nome(nome_match1);
+                    if(checagem_nome1<0){
+                        System.out.println("Nome invalido, não existe no nosso sistema");
+                    }
+                    System.out.println("----------------------------------------------");
+                }while(checagem_nome1<0);
+                
+                
+                do{
+                    System.out.println("Digite o nome do segundo pokemon");
                 nome_match2 = input.next();
+                checagem_nome2= read_nome(nome_match2);
+                if(checagem_nome2<0){
+                    System.out.println("Nome invalido, não existe no nosso sistema");
+                }
                 System.out.println("----------------------------------------------");
 
+                }while(checagem_nome2<0);
+
+                
                 int resposta_match = teste_match(nome_match1, nome_match2);
                 if (resposta_match>0){
                     System.out.println("Parabens! esses pokemons podem cruzar!");
