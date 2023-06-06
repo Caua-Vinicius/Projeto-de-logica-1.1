@@ -418,7 +418,7 @@ public class Pikomon {
                 int delete_teste;
                 System.out.println("----------------------------------------------");
                 int checagem_nome_remove = read_nome(escolha_excluir);
-                if(checagem_nome_remove>0){
+                if(checagem_nome_remove>-1){
                     delete_teste = remove(escolha_excluir);
                     if(delete_teste > 0){
                     System.out.println("Pokemon Removido com sucesso");
