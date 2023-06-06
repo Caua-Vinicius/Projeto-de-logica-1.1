@@ -325,6 +325,7 @@ public class Pikomon {
             System.out.println("3- Buscar");
             System.out.println("4- Teste Match");
             System.out.println("5- Listar");
+            System.out.println("6- Sair do Programa");
 
 
             escolha = input.nextInt();
