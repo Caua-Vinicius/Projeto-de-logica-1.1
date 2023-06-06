@@ -283,15 +283,36 @@ public class Pikomon {
         int index_nome2 = read_nome(nome2);
         String grupo1_poke1 = grupos1.get(index_nome1);
         String grupo2_poke1 = grupos2.get(index_nome1);
-        String grupo1_poke2 = grupos2.get(index_nome2);
+        String grupo1_poke2 = grupos1.get(index_nome2);
         String grupo2_poke2 = grupos2.get(index_nome2);
         int sexo_poke1 = sexos_int.get(index_nome1);
         int sexo_poke2 = sexos_int.get(index_nome2);
         if(sexo_poke1 == 1 && sexo_poke2 == 2 || sexo_poke1 == 2 && sexo_poke2 ==1){
-            if(grupo1_poke1.equals(grupo1_poke2) || grupo1_poke1.equals(grupo2_poke2)){
+            if(grupo1_poke1.equals(grupo1_poke2) ){
                 return 1;
             }
-            if(grupo2_poke1.equals(grupo1_poke2) || grupo2_poke1.equals(grupo2_poke2)){
+            if(grupo1_poke2.equals(grupo2_poke2)){
+                return 1;
+            }
+            if(grupo2_poke1.equals(grupo1_poke2)){
+                return 1;
+            }
+            if(grupo1_poke2.equals(grupo2_poke1)){
+                return 1;
+            }
+            if(grupo2_poke1.equals(grupo1_poke2)){
+                return 1;
+            }
+            if(grupo2_poke2.equals(grupo1_poke1)){
+                return 1;
+            }
+            if(grupo1_poke1.equals(grupo2_poke2)){
+                return 1;
+            }
+            if(grupo2_poke1.equals(grupo1_poke2) ){
+                return 1;
+            }
+            if(grupo2_poke1.equals(grupo2_poke2)){
                 return 1;
             }
             else{
