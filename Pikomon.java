@@ -526,6 +526,8 @@ public class Pikomon {
                             contagem+=1;
                         }
                         pesquisa.clear();
+                    } else {
+                        System.out.println("nenhum pokemon neste grupo");
                     }
 
                     
